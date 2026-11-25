@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo:wght@400;600&family=ZCOOL+XiaoWei&display=swap');
+:root { --s-accent:oklch(40% .12 251);--s-muted:oklch(36% .063 249);--s-line:oklch(69% .061 248);--s-panel:oklch(93% .028 245) }
+body { background:oklch(96% .018 82);font-family:Chivo,serif }
+h1,h2 { font-family:"ZCOOL XiaoWei", serif }
+.contact { color:oklch(96% .022 84);background:oklch(27% .125 253);padding:1.75rem;border:6px double oklch(62% .087 248); }
+.stripdesk {display:grid; grid-template-columns: 2.3fr 1fr; gap: 2rem}
+@media(max-width:770px){.stripdesk{grid-template-columns:1fr}}
