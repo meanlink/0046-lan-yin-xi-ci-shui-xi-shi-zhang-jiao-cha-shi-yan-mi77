@@ -10,7 +10,7 @@ export function onSubmit(form, callback) {
     const button = form.querySelector('[type=submit], button');
     const status = form.querySelector('[role=status]');
     if (button) button.disabled = true;
-    try { notice(status, await callback(Object.fromEntries(new FormData(form)))); }
+    try { const result = await callback(Object.fromEntries(new FormData(form))); if (result !== undefined) notice(status, result); }
     catch (error) { notice(status, error.message, true); }
     finally { if (button) button.disabled = false; }
   });

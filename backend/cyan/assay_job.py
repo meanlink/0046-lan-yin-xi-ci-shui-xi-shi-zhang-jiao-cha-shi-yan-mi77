@@ -9,8 +9,8 @@ def run(connection,kind,payload):
     code=payload["code"]
     trial=plate(connection,code,True)
     rows,fingerprint=sample(connection,code)
-    gain,p=estimate([r["long_density"]-r["short_density"] for r in rows])
-    fade=max(float(r["long_fade"]) for r in rows)
+    gain,p=estimate([float(r["long"]["density"])-float(r["short"]["density"]) for r in rows])
+    fade=max(float(r["long"]["fade"]) for r in rows)
     return connection.execute(
         "INSERT INTO assays(plate,sample_key,gain,p,fade,n,eligible) VALUES(%s,%s,%s,%s,%s,%s,%s) RETURNING *",
         (code,fingerprint,gain,p,fade,len(rows),eligible(gain,p,fade,trial["fade_limit"]))).fetchone()
